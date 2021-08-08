@@ -1,0 +1,30 @@
+require:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.0
+  Include:
+    - "Gemfile"
+    - "Rakefile"
+    - "config.ru"
+    - "app/**/*.rb"
+    - "config/**/*.rb"
+    - "db/**/*.rb"
+    - "lib/**/*.rb"
+    - "lib/tasks/**/*.rake"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "config/definitions.rb"
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*"
+
+Metrics/BlockLength:
+  Enabled: false
