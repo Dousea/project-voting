@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 # Use Devise for a flexible authentication solution for Rails based on Warden.
 gem 'devise'
+# Use CanCanCan is an authorization library which restricts what resources a given user is allowed to access.
+gem 'cancancan'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
