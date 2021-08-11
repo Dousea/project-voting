@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 # Use CanCanCan is an authorization library which restricts what resources a given user is allowed to access.
 gem 'cancancan'
+# The administration framework
+gem 'activeadmin'
+gem 'activeadmin_addons'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
