@@ -59,6 +59,17 @@ $utilities: map-merge(
         null: $border-width solid $border-color,
         0: 0,
       )
+    ),
+    "max-width": (
+      property: max-width,
+      responsive: true,
+      class: mw,
+      values: (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%
+      )
     )
   )
 );
