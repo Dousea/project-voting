@@ -6,7 +6,16 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
+import jQuery from "jquery"
+import feather from "feather-icons"
 import "channels"
+import "stylesheets/application"
+
+global.$ = jQuery
+global.jQuery = jQuery
+global.window.jQuery = jQuery
+global.feather = feather
+global.bootstrap = require("bootstrap")
 
 Rails.start()
 Turbolinks.start()

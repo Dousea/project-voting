@@ -1,0 +1,16 @@
+.input-group--array {
+  display: grid;
+  row-gap: 0.25rem;
+}
+
+.input-group--array__item > input {
+  margin-right: 0.5rem;
+
+  &.text--strike {
+    text-decoration: line-through;
+  }
+
+  &.has-error:focus {
+    box-shadow: 0 0 4px red !important;
+  }
+}

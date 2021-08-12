@@ -1,0 +1,50 @@
+@import "bootstrap";
+@import "devise";
+
+:root {
+  --top-nav-height: 4.5rem; // offset height
+  --bottom-nav-height: 4.5rem; // offset height
+  --main-padding-y: 1rem;
+}
+
+body {
+  font-family: "Poppins";
+  height: 100vh;
+  overflow: hidden;
+}
+
+.top-nav {
+  height: var(--top-nav-height);
+}
+
+.bottom-nav {
+  height: var(--bottom-nav-height);
+}
+
+main {
+  margin-top: var(--top-nav-height);
+  padding-top: var(--main-padding-y);
+  padding-bottom: var(--main-padding-y);
+  height: calc(100% - var(--top-nav-height));
+  overflow: auto;
+
+  &.bottom {
+    height: calc(100% - (var(--top-nav-height) + var(--bottom-nav-height)));
+  }
+}
+
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 1pt;
+}
+
+.home-nav {
+  width: 25rem;
+}
+
+.toast-container {
+  position: absolute;
+  top: calc(1.5rem + var(--top-nav-height));
+  left: 50%;
+  transform: translateX(-50%);
+}
