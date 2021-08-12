@@ -1,16 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
   <head>
-    <title>ProjectVoting</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>E-Votif</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="nav top-nav fixed-top navbar-dark bg-dark shadow">
+      <div class="container h-100 navbar">
+        <%= link_to root_path, class: 'navbar-brand d-flex align-items-center' do %>
+          <!-- This is temporary logo for this app -->
+          <i class="me-2" data-feather="aperture"></i>
+          E-Votif
+        <% end %>
+        <%= yield :top %>
+      </div>
+    </div>
+
+    <main>
+      <div class="container h-100">
+        <%= yield %>
+      </div>
+    </main>
+
+    <% unless flash.empty? %>
+      <div class="toast-container" aria-live="polite" aria-atomic="true">
+        <% flash.each do |type, message| %>
+          <div
+            class="toast d-flex align-items-center text-white border-0 bg-<%= bootstrap_flash_color(type) %>"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-body d-flex align-items-center">
+              <i class="me-2" data-feather="<%= feather_flash_icon(type) %>" width=24 height=24 stroke-width=2></i>
+              <%= message %>
+            </div>
+            <button class="btn-close btn-close-white ms-auto me-2" type="button" data-bs-dismiss="toast" aria-label="Tutup">
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <script>
+      feather.replace()
+    </script>
+
+    <% unless flash.empty? %>
+      <script>
+        document.addEventListener('turbolinks:before-cache', () => {
+          document.querySelector('.toast-container')?.remove()
+        })
+
+        document.addEventListener('turbolinks:load', () => {
+          document.querySelectorAll('.toast').forEach(node => {
+            let toast = new bootstrap.Toast(node)
+            toast.show()
+          })
+        })
+      </script>
+    <% end %>
+
+    <%= yield :js %>
   </body>
 </html>
