@@ -1,8 +1,8 @@
 <div class="d-flex align-items-center min-h-100">
   <div class="w-100 d-flex flex-column align-items-center">
-    <section class="w-100 mb-5 text-center">
+    <section class="card w-100 p-3 mb-3 align-items-center" style="max-width:30rem">
       <h1 class="mb-3 fs-5 fw-bold">Profil Anda</h1>
-      <div class="mw-md-50 mx-auto p-3 border rounded shadow">
+      <div class="w-100">
         <%
           data = {
             "NIM" => "0123456789",
@@ -13,7 +13,7 @@
         %>
         <% data.each do |key, value| %>
           <div class="row">
-            <div class="col-5 border-end text-end">
+            <div class="col-5 border-end border-dark text-end">
               <%= key %>
             </div>
             <div class="col-7 text-muted">
@@ -26,9 +26,9 @@
       </div>
     </section>
 
-    <section class="text-center">
-      <p>Siap memilih?</p>
-      <%= link_to 'Siap!', '#', class: 'btn btn-primary' %>
+    <section class="card w-100 p-3 mb-5 align-items-center" style="max-width:30rem">
+      <p>Anda <strong>belum</strong> memilih kandidat.</p>
+      <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
