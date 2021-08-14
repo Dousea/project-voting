@@ -13,7 +13,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="vh-100 overflow-hidden">
     <nav class="nav top-nav fixed-top navbar-dark bg-dark shadow">
       <div class="container h-100 navbar">
         <%= link_to root_path, class: 'navbar-brand d-flex align-items-center' do %>
@@ -37,8 +37,8 @@
       </div>
     </nav>
 
-    <main>
-      <div class="container h-100">
+    <main class="d-flex flex-column overflow-auto">
+      <div class="container flex-fill">
         <%= yield %>
       </div>
     </main>

@@ -9,8 +9,6 @@
 
 body {
   font-family: "Roboto Slab", serif;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .top-nav {
@@ -23,10 +21,7 @@ body {
 
 main {
   margin-top: var(--top-nav-height);
-  padding-top: var(--main-padding-y);
-  padding-bottom: var(--main-padding-y);
   height: calc(100% - var(--top-nav-height));
-  overflow: auto;
   background-color: #ED1B24;
   background-position: top;
   background-size: cover;
@@ -34,6 +29,11 @@ main {
 
   &.bottom {
     height: calc(100% - (var(--top-nav-height) + var(--bottom-nav-height)));
+  }
+
+  > .container {
+    padding-top: var(--main-padding-y);
+    padding-bottom: var(--main-padding-y);
   }
 }
 
