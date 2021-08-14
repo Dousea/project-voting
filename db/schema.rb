@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_053755) do
+ActiveRecord::Schema.define(version: 2021_08_14_130856) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2021_08_11_053755) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "candidate_attributes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "number", null: false
+    t.text "vision", null: false
+    t.text "mission", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_candidate_attributes_on_user_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,4 +67,5 @@ ActiveRecord::Schema.define(version: 2021_08_11_053755) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "candidate_attributes", "users"
 end
