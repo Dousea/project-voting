@@ -21,8 +21,14 @@
         <% end %>
         <% if user_signed_in? %>
           <ul class="list-unstyled d-flex m-0">
+            <li class="me-4">
+              <%= navbar_link_unless current_page?(vote_path), 'check-circle', "Pilih", vote_path %>
+            </li>
+            <li class="me-4">
+              <%= navbar_link_unless current_page?(profile_path), 'user', "Profil", profile_path %>
+            </li>
             <li>
-              <%= navbar_link 'log-out', t('.sign_out'), destroy_user_session_path, method: :delete %>
+              <%= navbar_link 'log-out', "Keluar", destroy_user_session_path, method: :delete %>
             </li>
           </ul>
         <% end %>
