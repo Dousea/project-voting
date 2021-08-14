@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_one :candidate_attribute, dependent: :destroy
 
   validates :name, presence: true
+  validates :sidn, presence: true
 end
