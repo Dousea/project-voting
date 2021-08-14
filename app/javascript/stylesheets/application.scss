@@ -27,10 +27,25 @@ main {
   padding-bottom: var(--main-padding-y);
   height: calc(100% - var(--top-nav-height));
   overflow: auto;
-  background: url('../../assets/images/hands.png') #eee repeat-x bottom/70%;
+  background-color: #ED1B24;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &.bottom {
     height: calc(100% - (var(--top-nav-height) + var(--bottom-nav-height)));
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    background-image: url('../../assets/images/background-mobile.jpg');
+  }
+}
+
+@media (min-width: 769px) {
+  main {
+    background-image: url('../../assets/images/background.jpg');
   }
 }
 
