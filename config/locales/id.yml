@@ -1,2 +1,9 @@
 id:
-  hello: "Halo Dunia"
+  activerecord:
+    models:
+      user: Pemilih
+    attributes:
+      user:
+        email: Email
+        password: Kata sandi
+        remember_me: Ingat saya
