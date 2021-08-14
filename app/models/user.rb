@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :candidate_attribute, dependent: :destroy
+
+  validates :name, presence: true
 end
