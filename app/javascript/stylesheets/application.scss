@@ -27,6 +27,7 @@ main {
   padding-bottom: var(--main-padding-y);
   height: calc(100% - var(--top-nav-height));
   overflow: auto;
+  background: url('../../assets/images/hands.png') #eee repeat-x bottom/70%;
 
   &.bottom {
     height: calc(100% - (var(--top-nav-height) + var(--bottom-nav-height)));
@@ -47,4 +48,9 @@ main {
   top: calc(1.5rem + var(--top-nav-height));
   left: 50%;
   transform: translateX(-50%);
+}
+
+.card {
+  background-color: #fff9;
+  backdrop-filter: blur(15px);
 }
