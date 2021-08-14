@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   get '/profile', to: 'users#show'
+  get '/vote', to: 'voting#index'
 
-  root to: 'users#show'
+  root to: redirect('/users/sign_in')
 end
