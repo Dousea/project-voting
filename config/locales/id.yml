@@ -7,3 +7,5 @@ id:
         email: Email
         password: Kata sandi
         remember_me: Ingat saya
+        name: Nama
+        sidn: NIM

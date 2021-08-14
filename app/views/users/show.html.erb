@@ -3,18 +3,12 @@
     <section class="card w-100 p-3 mb-3 align-items-center" style="max-width:30rem">
       <h1 class="mb-3 fs-5 fw-bold">Profil Anda</h1>
       <div class="w-100">
-        <%
-          data = {
-            "NIM" => "0123456789",
-            "Nama Lengkap" => "John Doe",
-            "Tempat Lahir" => "Indonesia",
-            "Tanggal Lahir" => "01/01/1999"
-          }
-        %>
-        <% data.each do |key, value| %>
+        <% %i[name sidn].each do |attribute| %>
+          <% value = @user.send(attribute) %>
+          <% next if value.nil? %>
           <div class="row">
             <div class="col-5 border-end border-dark text-end">
-              <%= key %>
+              <%= t("activerecord.attributes.user.#{attribute.to_s}") %>
             </div>
             <div class="col-7 text-muted">
               <div class="d-flex align-items-center">
