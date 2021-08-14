@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   get '/vote', to: 'voting#index'
 
-  root to: redirect('/users/sign_in')
+  root to: redirect('/profile')
 end
