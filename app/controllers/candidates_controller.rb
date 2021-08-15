@@ -7,18 +7,32 @@ class CandidatesController < ApplicationController
   def index
     @candidates = User.candidates.order('candidate_attributes.number ASC')
 
-    redirect_to profile_path, alert: 'Tidak ada kandidat yang tersedia.' if @candidates.empty?
+    respond_to do |format|
+      format.html do
+        redirect_to profile_path, alert: 'Tidak ada kandidat yang tersedia.' if @candidates.empty?
+      end
+    end
   end
 
   def show
     @candidate = User.candidates.find_by(candidate_attributes: { number: params[:number] })
 
-    redirect_to profile_path, alert: "Tidak ada kandidat bernomor #{params[:number]}." if @candidate.nil?
+    respond_to do |format|
+      format.html do
+        redirect_to profile_path, alert: "Tidak ada kandidat bernomor #{params[:number]}." if @candidate.nil?
+      end
+    end
   end
 
   private
 
   def redirect_if_candidate!
-    redirect_to profile_path, alert: 'Anda tidak bisa mengakses karena Anda seorang kandidat!' if current_user.candidate?
+    return unless current_user.candidate?
+
+    respond_to do |format|
+      format.html do
+        redirect_to profile_path, alert: 'Anda tidak bisa mengakses karena Anda seorang kandidat!'
+      end
+    end
   end
 end
