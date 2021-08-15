@@ -21,8 +21,13 @@
     </section>
 
     <section class="card w-100 p-3 mb-5 align-items-center" style="max-width:30rem">
-      <p>Anda <strong>belum</strong> memilih kandidat.</p>
-      <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary' %>
-    </div>
+      <% if @user.candidate? %>
+        <p>Ada <strong>5</strong> orang yang memilih Anda!</p>
+        <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary' %>
+      <% else %>
+        <p>Anda <strong>belum</strong> memilih kandidat.</p>
+        <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary' if @user.can_vote? %>
+      <% end %>
+    </section>
   </div>
 </div>
