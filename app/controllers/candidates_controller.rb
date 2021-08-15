@@ -2,7 +2,7 @@
 
 class CandidatesController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_if_candidate!
+  before_action :redirect_if_cannot_vote!
 
   def index
     @candidates = User.candidates.order('candidate_attributes.number ASC')
@@ -43,12 +43,12 @@ class CandidatesController < ApplicationController
 
   private
 
-  def redirect_if_candidate!
-    return unless current_user.candidate?
+  def redirect_if_cannot_vote!
+    return if current_user.can_vote?
 
     respond_to do |format|
       format.html do
-        redirect_to profile_path, alert: 'Anda tidak bisa mengakses karena Anda seorang kandidat!'
+        redirect_to profile_path, alert: 'Anda tidak bisa mengakses karena Anda tidak bisa memilih!'
       end
     end
   end
