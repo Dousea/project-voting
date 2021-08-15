@@ -1,0 +1,20 @@
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div class="mw-md-50">
+    <div class="row g-3">
+      <% @candidates.each do |candidate| %>
+        <div class="col-sm-6">
+          <div class="card">
+            <%= image_tag 'candidate-placeholder.jpg', class: 'card-img-top', alt: 'Candidate' %>
+            <div class="card-body text-center">
+              <h2 class="card-title fs-5"><%= candidate.name %></h2>
+              <div class="d-flex flex-column">
+                <a href="#" class="btn btn-primary mb-1">Pilih</a>
+                <%= link_to 'Lihat Profil', candidate_path(candidate.number), class: 'small link-secondary text-decoration-none' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
