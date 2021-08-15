@@ -2,18 +2,18 @@
   <div class="mw-md-50">
     <div class="row g-3">
       <% @candidates.each do |candidate| %>
-        <div class="col-sm-6">
+        <%= form_with url: vote_candidate_path(candidate.number), class: 'col-sm-6' do |form| %>
           <div class="card">
             <%= image_tag 'candidate-placeholder.jpg', class: 'card-img-top', alt: 'Candidate' %>
             <div class="card-body text-center">
               <h2 class="card-title fs-5"><%= candidate.name %></h2>
               <div class="d-flex flex-column">
-                <a href="#" class="btn btn-primary mb-1">Pilih</a>
+                <%= form.submit 'Pilih!', class: 'btn btn-primary mb-1' %>
                 <%= link_to 'Lihat Profil', candidate_path(candidate.number), class: 'small link-secondary text-decoration-none' %>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

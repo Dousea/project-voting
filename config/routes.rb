@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   get '/vote', to: 'candidates#index'
   get '/candidates/:number', to: 'candidates#show', as: 'candidate'
+  post '/candidates/:number/vote', to: 'candidates#vote', as: 'vote_candidate'
 
   root to: redirect('/profile')
 end

@@ -24,6 +24,23 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def vote
+    respond_to do |format|
+      format.html do
+        @candidate = User.candidates.find_by(candidate_attributes: { number: params[:number] })
+    
+        unless @candidate.nil?
+          if current_user.update(voted_candidate: @candidate)
+            render :thank_you
+          else
+            logger.error "[ERROR] Couldn't vote. #{current_user.errors.full_messages.join(', ')}."
+            redirect_to vote_path, alert: 'Tidak bisa memilih. Cobalah beberapa saat lagi.'
+          end
+        end
+      end
+    end
+  end
+
   private
 
   def redirect_if_candidate!
