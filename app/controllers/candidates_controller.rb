@@ -30,12 +30,16 @@ class CandidatesController < ApplicationController
         @candidate = User.candidates.find_by(candidate_attributes: { number: params[:number] })
     
         unless @candidate.nil?
-          if current_user.update(voted_candidate: @candidate)
+          vote = Vote.create(constituent: current_user, candidate: @candidate)
+
+          if vote.persisted?
             render :thank_you
           else
-            logger.error "[ERROR] Couldn't vote. #{current_user.errors.full_messages.join(', ')}."
+            logger.error "[ERROR] Couldn't vote: #{vote.errors.full_messages.join(', ')}."
             redirect_to vote_path, alert: 'Tidak bisa memilih. Cobalah beberapa saat lagi.'
           end
+        else
+          redirect_to vote_path, alert: 'Tidak bisa memilih seorang yang bukan kandidat.'
         end
       end
     end

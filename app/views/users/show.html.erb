@@ -22,11 +22,18 @@
 
     <section class="card w-100 p-3 mb-5 align-items-center" style="max-width:30rem">
       <% if @user.candidate? %>
-        <p>Ada <strong>5</strong> orang yang memilih Anda!</p>
-        <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary' %>
+        <div>Anda merupakan seorang kandidat.</div>
+        <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
       <% else %>
-        <p>Anda <strong>belum</strong> memilih kandidat.</p>
-        <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary' if @user.can_vote? %>
+        <div>
+          <% if @user.voted? %>
+            Anda telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
+            pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
+          <% else %>
+            Anda <strong>belum</strong> memilih seorang kandidat.
+          <% end %>
+        </div>
+        <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary mt-1' if @user.can_vote? %>
       <% end %>
     </section>
   </div>

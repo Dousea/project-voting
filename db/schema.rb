@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_15_080056) do
+ActiveRecord::Schema.define(version: 2021_08_15_104959) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -64,14 +64,26 @@ ActiveRecord::Schema.define(version: 2021_08_15_080056) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "sidn"
-    t.integer "voted_candidate_id"
+    t.integer "voted_candidate"
+    t.integer "vote_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["sidn"], name: "index_users_on_sidn", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
-    t.index ["voted_candidate_id"], name: "index_users_on_voted_candidate_id"
+    t.index ["vote_id"], name: "index_users_on_vote_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "candidate_id", null: false
+    t.integer "constituent_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["candidate_id", "constituent_id"], name: "index_votes_on_candidate_id_and_constituent_id", unique: true
+    t.index ["candidate_id"], name: "index_votes_on_candidate_id"
+    t.index ["constituent_id"], name: "index_votes_on_constituent_id"
   end
 
   add_foreign_key "candidate_attributes", "users"
-  add_foreign_key "users", "users", column: "voted_candidate_id"
+  add_foreign_key "votes", "users", column: "candidate_id"
+  add_foreign_key "votes", "users", column: "constituent_id"
 end

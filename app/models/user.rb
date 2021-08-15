@@ -7,7 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :candidate_attribute, dependent: :destroy
-  belongs_to :voted_candidate, class_name: 'User', optional: true
+  has_one :vote, foreign_key: 'constituent_id', inverse_of: :constituent
+  has_many :votes, foreign_key: 'candidate_id', inverse_of: :candidate
 
   scope :candidates, -> { joins(:candidate_attribute) }
 
@@ -20,7 +21,11 @@ class User < ApplicationRecord
     !candidate_attribute.nil?
   end
 
+  def voted?
+    !vote.nil?
+  end
+
   def can_vote?
-    !candidate? && voted_candidate.nil?
+    !candidate? && !voted?
   end
 end
