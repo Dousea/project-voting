@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2021_08_16_221938) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "candidate_attributes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "number", null: false
     t.text "vision", null: false
     t.text "mission", null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_221938) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "sidn"
-    t.integer "vote_id"
+    t.bigint "vote_id"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -55,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_221938) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "candidate_id", null: false
-    t.integer "constituent_id", null: false
+    t.bigint "candidate_id", null: false
+    t.bigint "constituent_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["candidate_id", "constituent_id"], name: "index_votes_on_candidate_id_and_constituent_id", unique: true
