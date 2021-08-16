@@ -1,6 +1,6 @@
 <div class="w-100 h-100 d-flex align-items-center justify-content-center">
   <div class="card mw-md-50 p-3 text-center">
-    <h1 class="fs-5 fw-bold">Perhitungan Langsung</h1>
+    <h1 class="fs-5 fw-bold">Perhitungan Suara <span class="badge bg-danger">LIVE</span></h1>
     <canvas id="livecount-chart" width="400" height="400" class="mb-3"></canvas>
     <div class="small text-muted">
       Terakhir kali diperbaharui: <span id="time-of-update">belum ada</span>
@@ -20,9 +20,9 @@
             <%= @candidates.map { |candidate| "'#{candidate.name}'"}.join(', ').html_safe %>
           ],
           datasets: [{
-            label: 'Perhitungan Langsung',
+            label: 'Perhitungan Suara',
             data: [
-              <%= Array.new(@candidates.count) { 1 }.join(', ') %>
+              <%= @candidates.map { |candidate| candidate.votes.count }.join(', ') %>
             ],
             backgroundColor: [
               <%= Array.new(@candidates.count) { "'##{Random.bytes(3).unpack1('H*')}'" }.join(', ').html_safe %>
