@@ -21,38 +21,25 @@
 
   <%
     alert_class =
-      if @user.candidate?
-        'info'
+      if @user.voted?
+        'success'
+      elsif @user.can_vote?
+        'warning'
       else
-        if @user.voted?
-          'success'
-        else
-          if @user.can_vote?
-            'warning'
-          else
-            'danger'
-          end
-        end
+        'danger'
       end
   %>
   <section class="alert alert-<%= alert_class %> w-100 p-3 d-flex flex-column align-items-center" style="max-width:30rem">
-    <% if @user.candidate? %>
-      <div>Kamu adalah seorang kandidat.</div>
-      <%= link_to 'Lihat Perolehan Suara!', live_path, class: 'alert-link text-decoration-none fs-5 fw-bold mt-1' %>
-    <% else %>
-      <div class="text-center">
-        <% if @user.voted? %>
-          Kamu telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
-          pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
-        <% else %>
-          <% if @user.can_vote? %>
-            Kamu <strong>belum</strong> memilih seorang kandidat.
-          <% else %>
-            Kamu <strong>belum bisa</strong> memilih seorang kandidat.
-          <% end %>
-        <% end %>
-      </div>
-      <%= link_to 'Pilih!', vote_path, class: 'alert-link text-decoration-none fs-4 fw-bold mt-1' if @user.can_vote? %>
-    <% end %>
+    <div class="text-center">
+      <% if @user.voted? %>
+        Kamu telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
+        pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
+      <% elsif @user.can_vote? %>
+        Kamu <strong>belum</strong> memilih seorang kandidat.
+      <% else %>
+        Kamu <strong>belum bisa</strong> memilih seorang kandidat.
+      <% end %>
+    </div>
+    <%= link_to 'Pilih!', vote_path, class: 'alert-link text-decoration-none fs-4 fw-bold mt-1' if @user.can_vote? %>
   </section>
 </div>
