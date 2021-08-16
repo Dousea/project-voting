@@ -45,7 +45,18 @@ class CandidatesController < ApplicationController
     end
   end
 
-  def live; end
+  def live
+    @candidates = User.candidates.order('candidate_attributes.number ASC')
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {
+          votes: @candidates.map { |candidate| candidate.votes.count }
+        }
+      end
+    end
+  end
 
   private
 

@@ -1,27 +1,50 @@
-<canvas id="myChart" width="400" height="400"></canvas>
+<div class="w-100 h-100 d-flex align-items-center justify-content-center">
+  <div class="card mw-md-50 p-3 text-center">
+    <h1 class="fs-5 fw-bold">Perhitungan Langsung</h1>
+    <canvas id="livecount-chart" width="400" height="400" class="mb-3"></canvas>
+    <div class="small text-muted">
+      Terakhir kali diupdate: <span id="time-of-update">belum ada</span>
+    </div>
+  </div>
+</div>
+
 <script>
   (() => {
-
-  })();
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var myChart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: [
-          'Red',
-          'Blue',
-          'Yellow'
-        ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [300, 50, 100],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+    if (liveCountChart) liveCountChart.destroy();
+    var liveCountChart = new Chart(
+      document.getElementById('livecount-chart').getContext('2d'),
+      {
+        type: 'pie',
+        data: {
+          labels: [
+            <%= @candidates.map { |candidate| "'#{candidate.name}'"}.join(', ').html_safe %>
           ],
-          hoverOffset: 4
-        }]
+          datasets: [{
+            label: 'Perhitungan Langsung',
+            data: [
+              <%= Array.new(@candidates.count) { 1 }.join(', ') %>
+            ],
+            backgroundColor: [
+              <%= Array.new(@candidates.count) { "'##{Random.bytes(3).unpack1('H*')}'" }.join(', ').html_safe %>
+            ],
+            hoverOffset: 4
+          }]
+        }
       }
-  });
+    );
+
+    if (intervalToUpdateLiveCount) clearInterval(intervalToUpdateLiveCount);
+    var intervalToUpdateLiveCount = setInterval(() => {
+      document.getElementById('time-of-update').textContent = dayjs().format('DD/MM/YYYY HH:mm:ss Z');
+
+      $.ajax({
+        url: '<%= live_path :json %>',
+        method: 'GET',
+        success: (data) => {
+         liveCountChart.data.datasets[0].data = data.votes;
+         liveCountChart.update();
+        }
+      });
+    }, 10000);
+  })();
 </script>
