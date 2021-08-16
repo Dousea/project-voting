@@ -19,17 +19,37 @@
     </div>
   </section>
 
-  <section class="card w-100 p-3 mb-5 align-items-center" style="max-width:30rem">
+  <%
+    alert_class =
+      if @user.candidate?
+        'info'
+      else
+        if @user.can_vote?
+          if user.voted?
+            'success'
+          else
+            'warning'
+          end
+        else
+          'danger'
+        end
+      end
+  %>
+  <section class="alert alert-<%= alert_class %> w-100 p-3 d-flex justify-content-center" style="max-width:30rem">
     <% if @user.candidate? %>
       <div>Kamu adalah seorang kandidat.</div>
       <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
     <% else %>
-      <div>
-        <% if @user.voted? %>
-          Kamu telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
-          pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
+      <div >
+        <% if @user.can_vote? %>
+          <% if @user.voted? %>
+            Kamu telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
+            pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
+          <% else %>
+            Kamu <strong>belum</strong> memilih seorang kandidat.
+          <% end %>
         <% else %>
-          Kamu <strong>belum</strong> memilih seorang kandidat.
+          Kamu <strong>belum bisa</strong> memilih seorang kandidat.
         <% end %>
       </div>
       <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary mt-1' if @user.can_vote? %>
