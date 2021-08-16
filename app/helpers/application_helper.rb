@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include AssetsHelper
   include BootstrapHelper
   include FeatherHelper
 

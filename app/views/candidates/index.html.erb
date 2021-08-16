@@ -1,10 +1,16 @@
 <div class="w-100 h-100 d-flex justify-content-center align-items-center">
   <div class="mw-md-50">
-    <div class="row g-3">
+    <div class="row g-5">
       <% @candidates.each do |candidate| %>
         <%= form_with url: vote_candidate_path(candidate.number), class: 'col-sm-6' do |form| %>
           <div class="card">
-            <%= image_tag 'candidate-placeholder.jpg', class: 'card-img-top', alt: 'Candidate' %>
+            <%
+              image_path =
+                asset_exists?("candidates/#{candidate.sidn}.jpg") ?
+                  "candidates/#{candidate.sidn}.jpg" :
+                  'candidate-placeholder.jpg'
+            %>
+            <%= image_tag image_path, class: 'card-img-top', style: 'object-fit:cover;height:250px', alt: candidate.name %>
             <div class="card-body text-center">
               <h2 class="card-title fs-5"><%= candidate.name %></h2>
               <div class="d-flex flex-column">

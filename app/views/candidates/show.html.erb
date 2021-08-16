@@ -4,7 +4,13 @@
     
     <div class="w-100">
       <div class="mb-3 d-flex justify-content-center w-100">
-        <%= image_tag 'candidate-placeholder.jpg', class: 'img-fluid img-thumbnail' %>
+        <%
+          image_path =
+            asset_exists?("candidates/#{candidate.sidn}.jpg") ?
+              "candidates/#{candidate.sidn}.jpg" :
+              'candidate-placeholder.jpg'
+        %>
+        <%= image_tag image_path, class: 'img-fluid img-thumbnail' %>
       </div>
       <% %i[name sidn vision mission].each do |attribute| %>
         <% value = @candidate.send(attribute) %>
