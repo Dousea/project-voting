@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CandidatesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :redirect_if_cannot_vote!
+  before_action :authenticate_user!, except: :live
+  before_action :redirect_if_cannot_vote!, except: :live
 
   def index
     @candidates = User.candidates.order('candidate_attributes.number ASC')
@@ -28,8 +28,10 @@ class CandidatesController < ApplicationController
     respond_to do |format|
       format.html do
         @candidate = User.candidates.find_by(candidate_attributes: { number: params[:number] })
-    
-        unless @candidate.nil?
+
+        if @candidate.nil?
+          redirect_to vote_path, alert: 'Tidak bisa memilih seorang yang bukan kandidat.'
+        else
           vote = Vote.create(constituent: current_user, candidate: @candidate)
 
           if vote.persisted?
@@ -38,12 +40,12 @@ class CandidatesController < ApplicationController
             logger.error "[ERROR] Couldn't vote: #{vote.errors.full_messages.join(', ')}."
             redirect_to vote_path, alert: 'Tidak bisa memilih. Cobalah beberapa saat lagi.'
           end
-        else
-          redirect_to vote_path, alert: 'Tidak bisa memilih seorang yang bukan kandidat.'
         end
       end
     end
   end
+
+  def live; end
 
   private
 
@@ -52,7 +54,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to profile_path, alert: 'Anda tidak bisa mengakses karena Anda tidak bisa memilih!'
+        redirect_to profile_path, alert: 'Tidak bisa mengakses karena tidak bisa memilih!'
       end
     end
   end
