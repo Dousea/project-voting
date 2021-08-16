@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module AssetsHelper
   def asset_exists?(path)
     if Rails.env.production?
