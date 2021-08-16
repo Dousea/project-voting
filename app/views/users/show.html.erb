@@ -25,7 +25,7 @@
         'info'
       else
         if @user.can_vote?
-          if user.voted?
+          if @user.voted?
             'success'
           else
             'warning'
@@ -35,7 +35,7 @@
         end
       end
   %>
-  <section class="alert alert-<%= alert_class %> w-100 p-3 d-flex justify-content-center" style="max-width:30rem">
+  <section class="alert alert-<%= alert_class %> w-100 p-3 d-flex flex-column align-items-center" style="max-width:30rem">
     <% if @user.candidate? %>
       <div>Kamu adalah seorang kandidat.</div>
       <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
@@ -52,7 +52,7 @@
           Kamu <strong>belum bisa</strong> memilih seorang kandidat.
         <% end %>
       </div>
-      <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary mt-1' if @user.can_vote? %>
+      <%= link_to 'Pilih!', vote_path, class: 'alert-link text-decoration-none fs-4 fw-bold mt-1' if @user.can_vote? %>
     <% end %>
   </section>
 </div>
