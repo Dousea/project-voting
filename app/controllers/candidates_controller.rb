@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CandidatesController < ApplicationController
-  before_action :authenticate_user!, except: :live
-  before_action :redirect_if_cannot_vote!, except: :live
+  before_action :authenticate_user!, except: %i[show live]
+  before_action :redirect_if_cannot_vote!, except: %i[show live]
 
   def index
     @candidates = User.candidates.order('candidate_attributes.number ASC')
