@@ -20,7 +20,7 @@ module ProjectVoting
     #
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = 'Jakarta'
-    config.i18n.available_locales = %i[id]
+    config.i18n.available_locales = %i[en id]
     config.i18n.default_locale = :id
   end
 end
