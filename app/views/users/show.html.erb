@@ -38,7 +38,7 @@
   <section class="alert alert-<%= alert_class %> w-100 p-3 d-flex flex-column align-items-center" style="max-width:30rem">
     <% if @user.candidate? %>
       <div>Kamu adalah seorang kandidat.</div>
-      <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
+      <%= link_to 'Lihat Perolehan Suara!', live_path, class: 'alert-link text-decoration-none fs-5 fw-bold mt-1' %>
     <% else %>
       <div class="text-center">
         <% if @user.voted? %>
