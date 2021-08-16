@@ -6,8 +6,8 @@
       <div class="mb-3 d-flex justify-content-center w-100">
         <%
           image_path =
-            asset_exists?("candidates/#{candidate.sidn}.jpg") ?
-              "candidates/#{candidate.sidn}.jpg" :
+            asset_exists?("candidates/#{@candidate.sidn}.jpg") ?
+              "candidates/#{@candidate.sidn}.jpg" :
               'candidate-placeholder.jpg'
         %>
         <%= image_tag image_path, class: 'img-fluid img-thumbnail' %>
