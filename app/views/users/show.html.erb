@@ -1,40 +1,38 @@
-<div class="d-flex align-items-center h-100">
-  <div class="w-100 d-flex flex-column align-items-center">
-    <section class="card w-100 p-3 mb-3 align-items-center" style="max-width:30rem">
-      <h1 class="mb-3 fs-5 fw-bold">Profil Anda</h1>
-      <div class="w-100">
-        <% %i[name sidn].each do |attribute| %>
-          <% value = @user.send(attribute) %>
-          <% next if value.nil? %>
-          <div class="row">
-            <div class="col-5 border-end border-dark text-end">
-              <%= t("activerecord.attributes.user.#{attribute.to_s}") %>
-            </div>
-            <div class="col-7 text-muted">
-              <div class="d-flex align-items-center">
-                <%= value %>
-              </div>
+<div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+  <section class="card w-100 p-3 mb-3 align-items-center" style="max-width:30rem">
+    <h1 class="mb-3 fs-5 fw-bold">Profil Anda</h1>
+    <div class="w-100">
+      <% %i[name sidn].each do |attribute| %>
+        <% value = @user.send(attribute) %>
+        <% next if value.nil? %>
+        <div class="row">
+          <div class="col-5 border-end border-dark text-end">
+            <%= t("activerecord.attributes.user.#{attribute.to_s}") %>
+          </div>
+          <div class="col-7 text-muted">
+            <div class="d-flex align-items-center">
+              <%= value %>
             </div>
           </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="card w-100 p-3 mb-5 align-items-center" style="max-width:30rem">
+    <% if @user.candidate? %>
+      <div>Anda merupakan seorang kandidat.</div>
+      <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
+    <% else %>
+      <div>
+        <% if @user.voted? %>
+          Anda telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
+          pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
+        <% else %>
+          Anda <strong>belum</strong> memilih seorang kandidat.
         <% end %>
       </div>
-    </section>
-
-    <section class="card w-100 p-3 mb-5 align-items-center" style="max-width:30rem">
-      <% if @user.candidate? %>
-        <div>Anda merupakan seorang kandidat.</div>
-        <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
-      <% else %>
-        <div>
-          <% if @user.voted? %>
-            Anda telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
-            pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
-          <% else %>
-            Anda <strong>belum</strong> memilih seorang kandidat.
-          <% end %>
-        </div>
-        <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary mt-1' if @user.can_vote? %>
-      <% end %>
-    </section>
-  </div>
+      <%= link_to 'Pilih!', vote_path, class: 'btn btn-primary mt-1' if @user.can_vote? %>
+    <% end %>
+  </section>
 </div>
