@@ -18,7 +18,7 @@
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <div class="mb-1">
-    <%= link_to "Tidak menerima instruksi konfirmasi?", new_confirmation_path(resource_name), class: 'small link-secondary text-decoration-none' %>
+    <%= link_to "Tidak menerima instruksi konfirmasi?", new_user_confirmation_path(resource_name), class: 'small link-secondary text-decoration-none' %>
   </div>
 <% end %>
 
