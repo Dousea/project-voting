@@ -9,8 +9,12 @@ import * as ActiveStorage from "@rails/activestorage"
 import jQuery from "jquery"
 import feather from "feather-icons"
 import Chart from "chart.js/auto"
+import dayjs from "dayjs"
+import "dayjs/locale/id"
 import "channels"
 import "stylesheets/application"
+
+dayjs.locale('id')
 
 global.$ = jQuery
 global.jQuery = jQuery
@@ -18,6 +22,7 @@ global.window.jQuery = jQuery
 global.feather = feather
 global.bootstrap = require("bootstrap")
 global.Chart = Chart
+global.dayjs = dayjs
 
 Rails.start()
 Turbolinks.start()
