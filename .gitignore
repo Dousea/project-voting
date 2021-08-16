@@ -36,6 +36,9 @@
 /config/certificates/*
 !/config/certificates/.keep
 
+# Ignore environment vars
+.*env*
+
 /public/packs
 /public/packs-test
 /node_modules
