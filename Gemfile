@@ -31,11 +31,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 # Use Devise for a flexible authentication solution for Rails based on Warden.
 gem 'devise'
-# Use CanCanCan is an authorization library which restricts what resources a given user is allowed to access.
-gem 'cancancan'
-# The administration framework
-gem 'activeadmin'
-gem 'activeadmin_addons'
 # Centralization of locale data collection for Ruby on Rails.
 gem 'rails-i18n', '~> 6.0.0'
 

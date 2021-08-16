@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  devise_for :admins, ActiveAdmin::Devise.config
 
   get '/profile', to: 'users#show'
   get '/vote', to: 'candidates#index'
