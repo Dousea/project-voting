@@ -7,8 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one :candidate_attribute, dependent: :destroy
-  has_one :vote, foreign_key: 'constituent_id', inverse_of: :constituent
-  has_many :votes, foreign_key: 'candidate_id', inverse_of: :candidate
+  has_one :vote, foreign_key: 'constituent_id', inverse_of: :constituent, dependent: :nullify
+  has_many :votes, foreign_key: 'candidate_id', inverse_of: :candidate, dependent: :nullify
 
   scope :candidates, -> { joins(:candidate_attribute) }
 
