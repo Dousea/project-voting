@@ -1,1 +1,33 @@
-Thank you!
+<div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+  <section class="card w-100 p-3 mb-3 text-center" style="max-width:30rem">
+    <h1 class="fs-3 fw-bold">Terima kasih!</h1>
+    <p>
+      Suara Anda telah masuk ke dalam sistem.
+      Terima kasih telah berpartisipasi dalam pemilihan ini.
+    </p>
+    <p class="text-muted small">
+      Dalam <span id="time-to-logout">10</span> detik Anda akan dikeluarkan secara otomatis.
+    </p>
+    <script>
+      (() => {
+        let secondsToLogout = 10;
+
+        if (intervalToLogout) clearInterval(intervalToLogout);
+        var intervalToLogout = setInterval(() => {
+          document.getElementById('time-to-logout').textContent = --secondsToLogout;
+
+          if (secondsToLogout <= 0) {
+            $.ajax({
+              url: '<%= destroy_user_session_path %>',
+              method: 'DELETE',
+              success: () => {
+                window.location.href = '<%= new_user_session_path %>'
+              }
+            });
+            clearInterval(intervalToLogout);
+          }
+        }, 1000);
+      })();
+    </script>
+  </section>
+</div>
