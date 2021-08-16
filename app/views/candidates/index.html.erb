@@ -10,6 +10,9 @@
                   "candidates/#{candidate.sidn}.jpg" :
                   'candidate-placeholder.jpg'
             %>
+            <div class="candidate-number d-flex justify-content-center align-items-center">
+              <%= candidate.number %>
+            </div>
             <%= image_tag image_path, class: 'card-img-top', style: 'object-fit:cover;height:250px', alt: candidate.name %>
             <div class="card-body text-center">
               <h2 class="card-title fs-5"><%= candidate.name %></h2>
