@@ -1,7 +1,7 @@
 id:
   activerecord:
     models:
-      user: Pemilih
+      user: Konstituen
     attributes:
       user:
         email: Email
@@ -12,9 +12,3 @@ id:
         number: Nomor
         vision: Visi
         mission: Misi
-  date:
-    formats:
-      default: "%d/%m/%Y"
-  time:
-    formats:
-      default: "%d/%m/%Y %H:%M"
