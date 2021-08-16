@@ -26,6 +26,6 @@ class User < ApplicationRecord
   end
 
   def can_vote?
-    !candidate? && !voted?
+    !candidate? && !voted? && eligible?
   end
 end
