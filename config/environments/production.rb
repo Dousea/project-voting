@@ -64,7 +64,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "project_voting_production"
 
-  config.action_mailer.default_url_options = { host: 'evotif.online' }
+  config.action_mailer.default_url_options = { host: 'evotif.online', protocol: 'https' }
 
   config.action_mailer.perform_caching = false
 
