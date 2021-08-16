@@ -21,8 +21,11 @@
           <i class="me-2" data-feather="aperture"></i>
           E-Votif
         <% end %>
-        <% if user_signed_in? %>
-          <ul class="list-unstyled d-flex m-0">
+        <ul class="list-unstyled d-flex m-0">
+          <li class="me-4">
+            <%= navbar_link_unless current_page?(live_path), 'pie-chart', 'Perhitungan Langsung', live_path %>
+          </li>
+          <% if user_signed_in? %>
             <% if current_user.can_vote? %>
               <li class="me-4">
                 <%= navbar_link_unless current_page?(vote_path), 'check-circle', "Pilih", vote_path %>
@@ -34,8 +37,12 @@
             <li>
               <%= navbar_link 'log-out', "Keluar", destroy_user_session_path, method: :delete %>
             </li>
-          </ul>
-        <% end %>
+          <% else %>
+            <li>
+              <%= navbar_link_unless current_page?(new_user_session_path), 'log-in', 'Masuk', new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </nav>
 
