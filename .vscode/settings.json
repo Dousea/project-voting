@@ -1,0 +1,9 @@
+{
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "solargraph.diagnostics": true,
+  "solargraph.logLevel": "info",
+  "solargraph.formatting": true,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n",
+}
