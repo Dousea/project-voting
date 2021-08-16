@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import jQuery from "jquery"
 import feather from "feather-icons"
+import Chart from "chart.js/auto"
 import "channels"
 import "stylesheets/application"
 
@@ -16,6 +17,7 @@ global.jQuery = jQuery
 global.window.jQuery = jQuery
 global.feather = feather
 global.bootstrap = require("bootstrap")
+global.Chart = Chart
 
 Rails.start()
 Turbolinks.start()
