@@ -3,19 +3,19 @@
 id:
   devise:
     confirmations:
-      confirmed: "Email Anda telah berhasil dikonfirmasi."
-      send_instructions: "Anda akan menerima sebuah email dengan instruksi bagaimana cara untuk mengkonfirmasikan email Anda."
-      send_paranoid_instructions: "Jika email Anda telah terdaftar, Anda akan menerima email dengan instruksi bagaimana cara untuk mengkonfirmasikan email Anda."
+      confirmed: "Email kamu telah berhasil dikonfirmasi."
+      send_instructions: "Kamu akan menerima sebuah email dengan instruksi bagaimana cara untuk mengkonfirmasikan email kamu."
+      send_paranoid_instructions: "Jika email kamu telah terdaftar, kamu akan menerima email dengan instruksi bagaimana cara untuk mengkonfirmasikan email kamu."
     failure:
-      already_authenticated: "Anda telah masuk."
-      inactive: "Akun Anda belum diaktifkan."
-      invalid: "%{authentication_keys} atau sandi Anda tidak cocok."
-      locked: "Akun Anda terkunci."
-      last_attempt: "Anda memiliki 1 kali kesempatan sebelum akun Anda dikunci."
-      not_found_in_database: "%{authentication_keys} atau sandi Anda tidak cocok."
-      timeout: "Sesi Anda telah berakhir. Silahkan masuk kembali untuk melanjutkan"
-      unauthenticated: "Anda perlu untuk masuk atau daftar sebelum melanjutkan."
-      unconfirmed: "Anda harus mengkonfirmasi email Anda terlebih dahulu sebelum melanjutkan."
+      already_authenticated: "Kamu telah masuk."
+      inactive: "Akun kamu belum diaktifkan."
+      invalid: "%{authentication_keys} atau sandi kamu tidak cocok."
+      locked: "Akun kamu terkunci."
+      last_attempt: "Kamu memiliki 1 kali kesempatan sebelum akun kamu dikunci."
+      not_found_in_database: "%{authentication_keys} atau sandi kamu tidak cocok."
+      timeout: "Sesi kamu telah berakhir. Silahkan masuk kembali untuk melanjutkan"
+      unauthenticated: "Kamu perlu untuk masuk atau daftar sebelum melanjutkan."
+      unconfirmed: "Kamu harus mengkonfirmasi email kamu terlebih dahulu sebelum melanjutkan."
     mailer:
       confirmation_instructions:
         subject: "Instruksi untuk Konfirmasi"
@@ -28,36 +28,36 @@ id:
       password_change:
         subject: "Sandi berubah"
     omniauth_callbacks:
-      failure: 'Tidak dapat mengautentikasi Anda dari %{kind} dikarenakan "%{reason}".'
+      failure: 'Tidak dapat mengautentikasi kamu dari %{kind} dikarenakan "%{reason}".'
       success: "Autentikasi berhasil dari akun %{kind}."
     passwords:
-      no_token: "Anda tidak dapat mengakses halaman ini tanpa melalui email yang menginstruksikan cara untuk mereset sandi. Jika Anda benar membuka tautan dari email reset password, maka pastikan Anda memasukkan URL secara utuh."
-      send_instructions: "Anda akan menerima email dengan instruksi cara untuk mereset sandi Anda."
-      send_paranoid_instructions: "Jika email Anda telah terdaftar, Anda akan menerima tautan untuk memulihkan sandi Anda."
-      updated: "Sandi Anda berhasil diubah dan Anda telah dimasukkan."
-      updated_not_active: "Sandi Anda berhasil diubah."
+      no_token: "Kamu tidak dapat mengakses halaman ini tanpa melalui email yang menginstruksikan cara untuk mereset sandi. Jika kamu benar membuka tautan dari email reset password, maka pastikan kamu memasukkan URL secara utuh."
+      send_instructions: "Kamu akan menerima email dengan instruksi cara untuk mereset sandi kamu."
+      send_paranoid_instructions: "Jika email kamu telah terdaftar, kamu akan menerima tautan untuk memulihkan sandi kamu."
+      updated: "Sandi kamu berhasil diubah dan kamu telah dimasukkan."
+      updated_not_active: "Sandi kamu berhasil diubah."
     registrations:
-      destroyed: "Sampai jumpa! Akun Anda telah dibatalkan. Kami berharap bertemu lagi dengan Anda."
-      signed_up: "Selamat Datang! Anda telah berhasil masuk."
-      signed_up_but_inactive: "Anda telah berhasil terdaftar. Tetapi, kami tidak dapat memasukkan Anda dikarenakan akun Anda belum diaktifkan."
-      signed_up_but_locked: "Anda telah berhasil terdaftar. Tetapi, kami tidak dapat memasukkan Anda dikarenakan akun Anda terkunci."
-      signed_up_but_unconfirmed: "Sebuah pesan dengan tautan untuk konfirmasi telah di kirim ke alamat email Anda. Mohon untuk mengikuti tautan yang ada untuk mengaktifkan akun Anda."
-      update_needs_confirmation: "Akun Anda telah berhasil diubah, mohon verifikasi email Anda. Cek email Anda dan ikuti cara yang dicantumkan untuk mengkonfirmasi email Anda."
-      updated: "Akun Anda telah berhasil diubah."
-      updated_but_not_signed_in: "Akun Anda telah berhasil diperbarui, tetapi karena kata sandi Anda diubah, Anda harus masuk lagi"
+      destroyed: "Sampai jumpa! Akun kamu telah dibatalkan. Kami berharap bertemu lagi dengan kamu."
+      signed_up: "Selamat Datang! Kamu telah berhasil masuk."
+      signed_up_but_inactive: "Kamu telah berhasil terdaftar. Tetapi, kami tidak dapat memasukkan kamu dikarenakan akun kamu belum diaktifkan."
+      signed_up_but_locked: "Kamu telah berhasil terdaftar. Tetapi, kami tidak dapat memasukkan kamu dikarenakan akun kamu terkunci."
+      signed_up_but_unconfirmed: "Sebuah pesan dengan tautan untuk konfirmasi telah di kirim ke alamat email kamu. Mohon untuk mengikuti tautan yang ada untuk mengaktifkan akun kamu."
+      update_needs_confirmation: "Akun kamu telah berhasil diubah, mohon verifikasi email kamu. Cek email kamu dan ikuti cara yang dicantumkan untuk mengkonfirmasi email kamu."
+      updated: "Akun kamu telah berhasil diubah."
+      updated_but_not_signed_in: "Akun kamu telah berhasil diperbarui, tetapi karena kata sandi kamu diubah, kamu harus masuk lagi"
     sessions:
-      signed_in: "Anda telah berhasil masuk."
-      signed_out: "Anda telah berhasil keluar."
-      already_signed_out: "Anda telah berhasil keluar."
+      signed_in: "Kamu telah berhasil masuk."
+      signed_out: "Kamu telah berhasil keluar."
+      already_signed_out: "Kamu telah berhasil keluar."
     unlocks:
-      send_instructions: "Anda akan menerima email dengan instruksi bagaimana cara untuk membuka kunci pada akun Anda."
-      send_paranoid_instructions: "Jika akun Anda terdaftar, Anda akan menerima email dengan instruksi bagaimana cara untuk membuka kunci pada akun Anda."
-      unlocked: "Akun Anda telah berhasil dibuka. Silahkan masuk untuk melanjutkan."
+      send_instructions: "Kamu akan menerima email dengan instruksi bagaimana cara untuk membuka kunci pada akun kamu."
+      send_paranoid_instructions: "Jika akun kamu terdaftar, kamu akan menerima email dengan instruksi bagaimana cara untuk membuka kunci pada akun kamu."
+      unlocked: "Akun kamu telah berhasil dibuka. Silahkan masuk untuk melanjutkan."
   errors:
     messages:
-      already_confirmed: "telah dikonfirmasi, Silahkan coba untuk masuk"
-      confirmation_period_expired: "butuh dikonfirmasi dalam waktu %{period}, tolong Anda minta kembali"
-      expired: "telah habis masa berlakunya, tolong Anda minta kembali"
+      already_confirmed: "telah dikonfirmasi, silahkan coba untuk masuk"
+      confirmation_period_expired: "butuh dikonfirmasi dalam waktu %{period}, tolong kamu minta kembali"
+      expired: "telah habis masa berlakunya, tolong kamu minta kembali"
       not_found: "tidak dapat kami temukan"
       not_locked: "tidak terkunci"
       not_saved:
