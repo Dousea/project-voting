@@ -24,14 +24,14 @@
       if @user.candidate?
         'info'
       else
-        if @user.can_vote?
-          if @user.voted?
-            'success'
-          else
-            'warning'
-          end
+        if @user.voted?
+          'success'
         else
-          'danger'
+          if @user.can_vote?
+            'warning'
+          else
+            'danger'
+          end
         end
       end
   %>
@@ -40,16 +40,16 @@
       <div>Kamu adalah seorang kandidat.</div>
       <%= link_to 'Lihat Perolehan Hitung Cepat!', '#', class: 'btn btn-primary mt-1' %>
     <% else %>
-      <div >
-        <% if @user.can_vote? %>
-          <% if @user.voted? %>
-            Kamu telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
-            pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
-          <% else %>
-            Kamu <strong>belum</strong> memilih seorang kandidat.
-          <% end %>
+      <div class="text-center">
+        <% if @user.voted? %>
+          Kamu telah memilih kandidat nomor <%= @user.vote.candidate.number %> bernama <strong><%= @user.vote.candidate.name %></strong>
+          pada tanggal <strong><%= l(@user.vote.updated_at) %></strong>.
         <% else %>
-          Kamu <strong>belum bisa</strong> memilih seorang kandidat.
+          <% if @user.can_vote? %>
+            Kamu <strong>belum</strong> memilih seorang kandidat.
+          <% else %>
+            Kamu <strong>belum bisa</strong> memilih seorang kandidat.
+          <% end %>
         <% end %>
       </div>
       <%= link_to 'Pilih!', vote_path, class: 'alert-link text-decoration-none fs-4 fw-bold mt-1' if @user.can_vote? %>
