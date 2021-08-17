@@ -9,7 +9,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to profile_path, alert: 'Tidak ada kandidat yang tersedia.' if @candidates.empty?
+        redirect_back fallback_location: profile_path, alert: 'Tidak ada kandidat yang tersedia.' if @candidates.empty?
       end
     end
   end
@@ -19,7 +19,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to profile_path, alert: "Tidak ada kandidat bernomor #{params[:number]}." if @candidate.nil?
+        redirect_back fallback_location: profile_path, alert: "Tidak ada kandidat bernomor #{params[:number]}." if @candidate.nil?
       end
     end
   end
@@ -65,7 +65,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to profile_path, alert: 'Tidak bisa mengakses karena tidak bisa memilih!'
+        redirect_back fallback_location: profile_path, alert: 'Tidak bisa mengakses karena tidak bisa memilih!'
       end
     end
   end
