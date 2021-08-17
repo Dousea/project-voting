@@ -10,7 +10,7 @@
               "candidates/#{@candidate.sidn}.jpg" :
               'candidate-placeholder.jpg'
         %>
-        <%= image_tag image_path, class: 'img-fluid img-thumbnail' %>
+        <%= image_tag image_path, class: 'mw-sm-50 img-thumbnail' %>
       </div>
       <% %i[name sidn vision mission].each do |attribute| %>
         <% value = @candidate.send(attribute) %>
