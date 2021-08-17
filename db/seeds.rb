@@ -1,18 +1,13 @@
 # frozen_string_literal: true
 
 if Rails.env.development?
-  Admin.create!(email: 'admin@example.com', password: 'password',
-                password_confirmation: 'password')
-
   25.times do
     name = Faker::Name.name
 
     User.create!(
       name: name,
       sidn: Faker::Number.number(digits: 10),
-      email: Faker::Internet.free_email(name: name),
-      password: '12345678',
-      password_confirmation: '12345678'
+      email: Faker::Internet.free_email(name: name)
     )
   end
 
@@ -22,9 +17,7 @@ if Rails.env.development?
     user = User.create!(
       name: name,
       sidn: Faker::Number.number(digits: 10),
-      email: Faker::Internet.free_email(name: name),
-      password: '12345678',
-      password_confirmation: '12345678'
+      email: Faker::Internet.free_email(name: name)
     )
 
     user.create_candidate_attribute!(
