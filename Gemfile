@@ -5,6 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '~> 2.7.0'
 
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+
 # Shim to load environment variables from .env into ENV in development.
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
