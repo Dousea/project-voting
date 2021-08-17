@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'securerandom'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :omniauthable, :confirmable
@@ -12,6 +13,7 @@ class User < ApplicationRecord
 
   scope :candidates, -> { joins(:candidate_attribute) }
 
+  before_validation :set_default_password, if: -> { password.nil? && password_confirmation.nil? }
   validates :name, presence: true
   validates :sidn, presence: true, uniqueness: true
 
@@ -27,5 +29,13 @@ class User < ApplicationRecord
 
   def can_vote?
     !voted? && eligible?
+  end
+
+  private
+
+  def set_default_password
+    password = SecureRandom.hex
+    self.password = password
+    self.password_confirmation = password
   end
 end
