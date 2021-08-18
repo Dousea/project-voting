@@ -13,7 +13,9 @@ class User < ApplicationRecord
 
   scope :candidates, -> { joins(:candidate_attribute) }
 
-  before_validation :set_default_password, if: -> { password.nil? && password_confirmation.nil? }
+  before_validation :set_default_password,
+                    on: :create,
+                    if: -> { password.nil? && password_confirmation.nil? }
   validates :name, presence: true
   validates :sidn, presence: true, uniqueness: true
 
