@@ -9,11 +9,13 @@ import * as ActiveStorage from "@rails/activestorage"
 import jQuery from "jquery"
 import feather from "feather-icons"
 import Chart from "chart.js/auto"
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 import dayjs from "dayjs"
 import "dayjs/locale/id"
 import "channels"
 import "stylesheets/application"
 
+Chart.register(ChartDataLabels)
 dayjs.locale('id')
 
 global.$ = jQuery
